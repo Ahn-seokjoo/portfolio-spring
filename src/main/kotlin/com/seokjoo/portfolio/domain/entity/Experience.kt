@@ -7,9 +7,9 @@ import jakarta.persistence.GenerationType
 import jakarta.persistence.Id
 
 @Entity
-class Experience : BaseEntity() {
+class Experience(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "experience_id")
-    var id: Long? = null
-}
+    var id: Long? = null,
+) : BaseEntity()

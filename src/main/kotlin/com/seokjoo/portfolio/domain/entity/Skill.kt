@@ -11,21 +11,16 @@ import jakarta.persistence.Id
 
 @Entity
 class Skill(
-    name: String,
-    type: String,
-    isActive: Boolean,
-) : BaseEntity() {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "skill_id")
-    var id: Long? = null
+    var id: Long? = null,
+    type: String,
 
-    var name: String = name
-
+    var name: String,
+    var isActive: Boolean,
+) : BaseEntity() {
     @Column(name = "skill_type")
     @Enumerated(value = EnumType.STRING)
     var type: SkillType = SkillType.valueOf(type)
-
-    // is_active 로 세팅됨
-    var isActive: Boolean = isActive
 }

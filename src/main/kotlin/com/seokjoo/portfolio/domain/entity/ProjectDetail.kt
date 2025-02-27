@@ -7,9 +7,9 @@ import jakarta.persistence.GenerationType
 import jakarta.persistence.Id
 
 @Entity
-class ProjectDetail : BaseEntity() {
+class ProjectDetail(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "project_detail_id")
-    var id: Long? = null
-}
+    var id: Long? = null,
+) : BaseEntity()

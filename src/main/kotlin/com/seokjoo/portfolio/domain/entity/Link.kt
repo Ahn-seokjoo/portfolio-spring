@@ -8,19 +8,12 @@ import jakarta.persistence.Id
 
 @Entity
 class Link(
-    name: String,
-    content: String,
-    isActive: Boolean,
+    var name: String,
+    var content: String,
+    var isActive: Boolean,
 ) : BaseEntity() {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "link_id")
     var id: Long? = null
-
-    var name: String = name
-
-    var content: String = content
-
-    // is_active 로 세팅됨
-    var isActive: Boolean = isActive
 }
