@@ -3,6 +3,7 @@ package com.seokjoo.portfolio.domain.entity
 import jakarta.persistence.CascadeType
 import jakarta.persistence.Column
 import jakarta.persistence.Entity
+import jakarta.persistence.FetchType
 import jakarta.persistence.GeneratedValue
 import jakarta.persistence.GenerationType
 import jakarta.persistence.Id
@@ -26,7 +27,7 @@ class Experience(
     /**
      * 영속성 컨텍스트 => ALL 이면 experience에 대해서 그 자식엔티티도 같이 전파되는 설정
      */
-    @OneToMany(cascade = [CascadeType.ALL])
+    @OneToMany(cascade = [CascadeType.ALL], fetch = FetchType.EAGER)
     @JoinColumn(name = "experience_id")
     val details: MutableList<ExperienceDetail> = mutableListOf(),
 ) : BaseEntity() {

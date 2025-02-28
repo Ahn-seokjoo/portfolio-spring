@@ -8,7 +8,6 @@ import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.TestInstance
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest
-import kotlin.math.exp
 import kotlin.test.Test
 
 @DataJpaTest
@@ -76,10 +75,10 @@ class ExperienceRepositoryTest(
         assertThat(experiences).hasSize(DATA_SIZE)
 
         for (experience in experiences) {
+            // details 부를 때 마다 select 오지게부름
             assertThat(experience.details).hasSize(experience.title.toInt())
             println("experience.detals.size = ${experience.details.size}")
         }
         println(" finAll 테스트 끝 ${experiences.size}")
     }
-
 }
