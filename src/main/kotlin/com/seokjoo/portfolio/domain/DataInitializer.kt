@@ -22,7 +22,7 @@ import org.springframework.stereotype.Component
 import java.time.LocalDate
 
 @Component
-@Profile(value = ["docker"])
+@Profile(value = ["default"])
 class DataInitializer(
     private val achievementRepository: AchievementRepository,
     private val introductionRepository: IntroductionRepository,
