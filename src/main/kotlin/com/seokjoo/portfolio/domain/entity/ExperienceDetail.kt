@@ -12,4 +12,12 @@ class ExperienceDetail(
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "experience_detail_id")
     var id: Long? = null,
-) : BaseEntity()
+
+    var content: String,
+    var isActive: Boolean,
+) : BaseEntity() {
+    fun update(content: String, isActive: Boolean) {
+        this.content = content
+        this.isActive = isActive
+    }
+}
