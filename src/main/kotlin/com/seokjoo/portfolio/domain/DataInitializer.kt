@@ -17,6 +17,7 @@ import com.seokjoo.portfolio.domain.repository.LinkRepository
 import com.seokjoo.portfolio.domain.repository.ProjectRepository
 import com.seokjoo.portfolio.domain.repository.SkillRepository
 import jakarta.annotation.PostConstruct
+import org.slf4j.LoggerFactory
 import org.springframework.context.annotation.Profile
 import org.springframework.stereotype.Component
 import java.time.LocalDate
@@ -31,10 +32,11 @@ class DataInitializer(
     private val projectRepository: ProjectRepository,
     private val experienceRepository: ExperienceRepository,
 ) {
+    private val log = LoggerFactory.getLogger(DataInitializer::class.java)
 
     @PostConstruct
     fun initializeDate() {
-        println("스프링 실행 되었다 테스트 데이터 초기화")
+        log.info("스프링 실행 되었다 테스트 데이터 초기화")
 
         val achievement = mutableListOf<Achievement>(
             Achievement(
