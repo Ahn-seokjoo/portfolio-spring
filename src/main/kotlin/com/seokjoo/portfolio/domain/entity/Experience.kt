@@ -20,8 +20,8 @@ class Experience(
     var description: String,
     var startYear: Int,
     var startMonth: Int,
-    var endYear: Int?,
-    var endMonth: Int?,
+    var endYear: Int? = null,
+    var endMonth: Int? = null,
     var isActive: Boolean,
     /**
      * 영속성 컨텍스트 => ALL 이면 experience에 대해서 그 자식엔티티도 같이 전파되는 설정
