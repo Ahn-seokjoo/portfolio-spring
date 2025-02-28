@@ -30,7 +30,7 @@ class Project(
     @JoinColumn(name = "project_id")
     val details: MutableList<ProjectDetail> = mutableListOf(),
 
-    @OneToMany(mappedBy = "project")
+    @OneToMany(mappedBy = "project", cascade = [CascadeType.PERSIST])
     var skills: MutableList<ProjectSkill> = mutableListOf(),
 ) : BaseEntity() {
 
