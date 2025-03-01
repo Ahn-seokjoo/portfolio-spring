@@ -1,6 +1,6 @@
 package com.seokjoo.portfolio.admin.context.achievement.controller
 
-import com.seokjoo.portfolio.admin.context.achievement.service.AdminAchievementViewService
+import com.seokjoo.portfolio.admin.context.achievement.service.AdminAchievementService
 import com.seokjoo.portfolio.admin.data.DateFormElementDTO
 import com.seokjoo.portfolio.admin.data.FormElementDTO
 import com.seokjoo.portfolio.admin.data.SelectFormElementDTO
@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping
 @Controller
 @RequestMapping("/admin/achievement")
 class AdminAchievementViewController(
-    private val adminAchievementViewService: AdminAchievementViewService,
+    private val adminAchievementViewService: AdminAchievementService,
 ) {
 
     @GetMapping
