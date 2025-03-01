@@ -104,8 +104,9 @@ class DataInitializer(
         val java = Skill(name = "Java", type = SkillType.LANGUAGE.name, isActive = true)
         val kotlin = Skill(name = "Kotlin", type = SkillType.LANGUAGE.name, isActive = true)
         val redis = Skill(name = "Redis", type = SkillType.DATABASE.name, isActive = true)
+        val spring = Skill(name = "Spring", type = SkillType.FRAMEWORK.name, isActive = true)
         val kafka = Skill(name = "Kafka", type = SkillType.TOOL.name, isActive = true)
-        skillRepository.saveAll(mutableListOf(java, kotlin, redis, kafka))
+        skillRepository.saveAll(mutableListOf(java, kotlin, redis, kafka, spring))
 
         val project1 = Project(
             name = "유기묘 발견 정보 공유 서비스",
@@ -125,7 +126,8 @@ class DataInitializer(
         project1.skills.addAll(
             mutableListOf(
                 ProjectSkill(project = project1, skill = kotlin),
-                ProjectSkill(project = project1, skill = redis)
+                ProjectSkill(project = project1, skill = redis),
+                ProjectSkill(project = project1, skill = spring)
             )
         )
         val project2 = Project(
@@ -155,7 +157,8 @@ class DataInitializer(
             mutableListOf(
                 ProjectSkill(project = project2, skill = kotlin),
                 ProjectSkill(project = project2, skill = redis),
-                ProjectSkill(project = project2, skill = kafka)
+                ProjectSkill(project = project2, skill = kafka),
+                ProjectSkill(project = project1, skill = spring),
             )
         )
         projectRepository.saveAll(mutableListOf(project1, project2))
