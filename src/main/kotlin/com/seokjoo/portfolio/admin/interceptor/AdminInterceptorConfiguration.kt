@@ -6,9 +6,11 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer
 
 @Configuration
 class AdminInterceptorConfiguration(
-    private val adminInterceptor: AdminInterceptor
+    private val adminInterceptor: AdminInterceptor,
 ) : WebMvcConfigurer {
     override fun addInterceptors(registry: InterceptorRegistry) {
-        super.addInterceptors(registry)
+        registry.addInterceptor(adminInterceptor)
+            .addPathPatterns("/admin/**")
+            .excludePathPatterns("/assets/**", "/css/**", "/js/*", "h2**")
     }
 }
