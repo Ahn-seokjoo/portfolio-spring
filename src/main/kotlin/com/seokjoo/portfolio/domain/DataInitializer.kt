@@ -1,6 +1,7 @@
 package com.seokjoo.portfolio.domain
 
 import com.seokjoo.portfolio.domain.constant.SkillType
+import com.seokjoo.portfolio.domain.entity.Account
 import com.seokjoo.portfolio.domain.entity.Achievement
 import com.seokjoo.portfolio.domain.entity.Experience
 import com.seokjoo.portfolio.domain.entity.ExperienceDetail
@@ -10,6 +11,7 @@ import com.seokjoo.portfolio.domain.entity.Project
 import com.seokjoo.portfolio.domain.entity.ProjectDetail
 import com.seokjoo.portfolio.domain.entity.ProjectSkill
 import com.seokjoo.portfolio.domain.entity.Skill
+import com.seokjoo.portfolio.domain.repository.AccountRepository
 import com.seokjoo.portfolio.domain.repository.AchievementRepository
 import com.seokjoo.portfolio.domain.repository.ExperienceRepository
 import com.seokjoo.portfolio.domain.repository.IntroductionRepository
@@ -31,6 +33,7 @@ class DataInitializer(
     private val skillRepository: SkillRepository,
     private val projectRepository: ProjectRepository,
     private val experienceRepository: ExperienceRepository,
+    private val accountRepository: AccountRepository,
 ) {
     private val log = LoggerFactory.getLogger(DataInitializer::class.java)
 
@@ -162,5 +165,11 @@ class DataInitializer(
             )
         )
         projectRepository.saveAll(mutableListOf(project1, project2))
+
+        val account = Account(
+            loginId = "admin100",
+            pw = "\$2a\$10\$uM0nKght0fnvxD7enbG06.4RgGvD5WhOMNnWJxJCckGHNRraQx7w."
+        )
+        accountRepository.save(account)
     }
 }
