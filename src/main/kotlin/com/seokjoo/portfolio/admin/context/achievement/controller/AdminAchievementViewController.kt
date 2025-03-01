@@ -1,0 +1,45 @@
+package com.seokjoo.portfolio.admin.context.achievement.controller
+
+import com.seokjoo.portfolio.admin.context.achievement.service.AdminAchievementViewService
+import com.seokjoo.portfolio.admin.data.DateFormElementDTO
+import com.seokjoo.portfolio.admin.data.FormElementDTO
+import com.seokjoo.portfolio.admin.data.SelectFormElementDTO
+import com.seokjoo.portfolio.admin.data.TextFormElementDTO
+import org.springframework.stereotype.Controller
+import org.springframework.ui.Model
+import org.springframework.web.bind.annotation.GetMapping
+import org.springframework.web.bind.annotation.RequestMapping
+
+@Controller
+@RequestMapping("/admin/achievement")
+class AdminAchievementViewController(
+    private val adminAchievementViewService: AdminAchievementViewService,
+) {
+
+    @GetMapping
+    fun achievement(model: Model): String {
+        val formElements = listOf<FormElementDTO>(
+            TextFormElementDTO("title", 4),
+            TextFormElementDTO("description", 8),
+            DateFormElementDTO("achievedDate", 5),
+            TextFormElementDTO("host", 5),
+            SelectFormElementDTO("isActive", 2, listOf(true.toString(), false.toString())),
+        )
+        model.addAttribute("formElements", formElements)
+
+        val table = adminAchievementViewService.getAchievementTable()
+        model.addAttribute("table", table)
+        model.addAttribute("detailTable", null)
+
+        val pageAttributes = mutableMapOf<String, Any>(
+            "menuName" to "Resume",
+            "pageName" to table.name,
+            "editable" to true,
+            "deletable" to false,
+            "hasDetails" to false,
+        )
+        model.addAllAttributes(pageAttributes)
+
+        return "admin/page-table"
+    }
+}
